@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap");
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 0.3px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  animation: showModal 0.5s ease-out;
+
+  .hide-modal {
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+  }
+
+  .hide-modal:hover {
+    width: 30px;
+    height: 30px;
+    right: -4px;
+    top: -4px;
+    fill: #ff004c;
+  }
+
+  .modal-header {
+    width: 100%;
+    height: 10%;
+  }
+
+  .modal-body {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modal-footer {
+    width: 100%;
+    height: 20%;
+  }
+}
+
+.hide {
+  display: none;
+  //   animation: modal 0.3s;
+}
+
+@keyframes showModal {
+  from {
+    top: 0;
+    left: 50%;
+    opacity: 0;
+  }
+
+  to {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
