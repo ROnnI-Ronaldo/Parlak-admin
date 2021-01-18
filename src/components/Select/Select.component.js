@@ -37,10 +37,18 @@ const SelectNative = (props) => {
   return (
     <div style={selectStyles}>
       <InputLabel htmlFor='age-native-simple'>{label}</InputLabel>
-      <Select onChange={onChange} style={{ width: width || "auto" }}>
+      <Select
+        value={value}
+        onChange={onChange}
+        style={{ width: width || "auto" }}
+      >
         {options && options.length > 0
           ? options.map((option, index) => (
-              <option value={option[valueField]} key={index}>
+              <option
+                style={{ cursor: "pointer" }}
+                value={option[valueField]}
+                key={index}
+              >
                 {option[labelField]}
               </option>
             ))

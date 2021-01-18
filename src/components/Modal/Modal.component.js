@@ -17,9 +17,6 @@ const Modal = (props) => {
     <>
       <BackDrop onClick={onClick} />
       <div className='modal' style={modalStyles}>
-        {/* <div className='hide-modal' onClick={onClick}>
-          X
-        </div> */}
         <AiFillCloseCircle onClick={onClick} className='hide-modal' />
         {header ? <div className='modal-header'>{header}</div> : null}
         <div className='modal-body'>{children}</div>
