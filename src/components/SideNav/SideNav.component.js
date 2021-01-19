@@ -7,20 +7,21 @@ import "./sideNav.styles.scss";
 const SideNav = (props) => {
   return (
     <div className='side-nav'>
-      <ul className='items-list'>
-        <li className='item'>
-          <NavLink to='/'>Home</NavLink>
-        </li>
-        <li className='item'>
-          <NavLink to='/products'>Products</NavLink>
-        </li>
-        <li className='item'>
-          <NavLink to='/orders'>Orders</NavLink>
-        </li>
-        <li className='item'>
-          <NavLink to='/categories'>Categories</NavLink>
-        </li>
-      </ul>
+      <NavLink className='item' exact={true} to='/'>
+        Home
+      </NavLink>
+
+      <NavLink className='item' to='/products'>
+        Products
+      </NavLink>
+
+      <NavLink className='item' to='/orders'>
+        Orders
+      </NavLink>
+
+      <NavLink className='item' to='/categories'>
+        Categories
+      </NavLink>
     </div>
   );
 };

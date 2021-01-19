@@ -1,0 +1,21 @@
+button[data-tool-tip] {
+  position: relative;
+
+  &::after {
+    content: attr(data-tool-tip);
+    position: absolute;
+    bottom: -100%;
+    background-color: gray;
+    color: white;
+    padding: 0.5em;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    transform: scale(0);
+    white-space: nowrap;
+    transition: transform ease-in 0.2s 0.5s;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}

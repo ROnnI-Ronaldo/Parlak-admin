@@ -16,7 +16,7 @@ const ProductsPage = (props) => {
   const user = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const [productDetails, setProductDetails] = useState({
     name: "",
@@ -28,8 +28,6 @@ const ProductsPage = (props) => {
   });
 
   const categoryListOptions = (categories, options = []) => {
-    //return an array with all list of categories
-
     for (let category of categories) {
       options.push({
         value: category._id,
@@ -61,9 +59,11 @@ const ProductsPage = (props) => {
       quantity,
       category,
     } = productDetails;
-    console.log(productPictures, "productPictures");
+
     formCategory.append("name", name);
-    formCategory.append("productPictures", ...productPictures);
+    productPictures.map((productPicture) =>
+      formCategory.append("productPictures", productPicture)
+    );
     formCategory.append("price", price);
     formCategory.append("description", description);
     formCategory.append("quantity", quantity);
@@ -71,6 +71,7 @@ const ProductsPage = (props) => {
     formCategory.append("createdBy", user.user._id);
 
     dispatch(createProduct(formCategory));
+    handleModalClose();
   };
 
   const modalHeader = () => (

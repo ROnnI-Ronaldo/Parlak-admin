@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../containers/Layout/layout";
 import Modal from "../../components/Modal/Modal.component";
+import Input from "../../components/Input/Input.component";
+import Select from "../../components/Select/Select.component";
+import CustomButton from "../../components/Button/Button.component";
+
+import { FaCloudUploadAlt } from "react-icons/fa";
 
 import { GoDiffAdded } from "react-icons/go";
 
-import {
-  fetchCategories,
-  addCategory,
-} from "../../redux/reducers/categories/categories.actions";
+import { addCategory } from "../../redux/reducers/categories/categories.actions";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -56,10 +58,6 @@ const Categories = (props) => {
     return options;
   };
 
-  useEffect(() => {
-    dispatch(fetchCategories());
-  }, []);
-
   const submitCategory = () => {
     const form = new FormData();
     form.append("categoryName", formData.categoryName);
@@ -69,11 +67,19 @@ const Categories = (props) => {
     hideModal();
   };
 
-  const modalHeader = () => <h1>Add New Category</h1>;
+  const modalHeader = () => (
+    <h1 style={{ color: "#FF6B6B", textAlign: "center" }}>Add New Category</h1>
+  );
   const modalFooter = () => (
-    <button className='add-category__button' onClick={submitCategory}>
-      Add Category
-    </button>
+    <CustomButton
+      variant='contained'
+      color='primary'
+      styles={{ width: "100%" }}
+      label='Add new Product'
+      startIcon={<FaCloudUploadAlt />}
+      onClick={submitCategory}
+      data-tool-tip='tool tip'
+    />
   );
 
   const addNewCategory = () => {
@@ -93,9 +99,13 @@ const Categories = (props) => {
       <div style={{ display: "block", width: "78%" }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <h1>Category List</h1>
-          <button className='add-new__category' onClick={addNewCategory}>
-            <GoDiffAdded />
-          </button>
+          <CustomButton
+            variant='contained'
+            color='primary'
+            startIcon={<GoDiffAdded />}
+            onClick={addNewCategory}
+            data-tool-tip='Add new Category'
+          />
         </div>
         <div>
           <ul>{listCategoryData(cat.categories)}</ul>
@@ -104,42 +114,38 @@ const Categories = (props) => {
           <Modal
             header={modalHeader()}
             footer={modalFooter()}
-            width='40%'
-            height='60%'
             onClick={hideModal}
           >
-            <div className='modal-children'>
-              <input
-                className='add-category__input'
-                placeholder='Category Name...!'
-                type='text'
-                onChange={(e) =>
-                  setFormData({ ...formData, categoryName: e.target.value })
-                }
-              />
-              <select
-                className='select-category__parent'
-                onChange={(e) =>
-                  setFormData({ ...formData, parentId: e.target.value })
-                }
-              >
-                <option value='0'>Select parent category</option>
-                {categoryListOptions(cat.categories).map((category) => (
-                  <option key={category.value} value={category.value}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
-              <label className='file'>
-                <input
-                  type='file'
-                  id='file'
-                  aria-label='File browser example'
-                  onChange={fileOnChange}
-                />
-                <span className='file-custom'></span>
-              </label>
-            </div>
+            <Input
+              type='text'
+              label='Category Name'
+              placeholder='Category Name...!'
+              width='400px'
+              styles={{ margin: "0 20px" }}
+              onChange={(e) =>
+                setFormData({ ...formData, categoryName: e.target.value })
+              }
+            />
+            <Select
+              label='Select parent category'
+              width='400px'
+              styles={{ margin: "20px 0" }}
+              valueField='value'
+              labelField='name'
+              onChange={(e) =>
+                setFormData({ ...formData, parentId: e.target.value })
+              }
+              options={categoryListOptions(cat.categories)}
+            />
+            <input
+              accept='image/*'
+              type='file'
+              style={{ margin: "20px", width: "90%" }}
+              onChange={fileOnChange}
+              onChange={(e) =>
+                setFormData({ ...formData, categoryImage: e.target.files[0] })
+              }
+            />
           </Modal>
         ) : null}
       </div>

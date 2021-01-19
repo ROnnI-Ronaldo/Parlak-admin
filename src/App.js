@@ -10,6 +10,8 @@ import OrdersPage from "./pages/orders/Orders.pages";
 import ProductsPage from "./pages/products/Products";
 import CategoryPage from "./pages/categories/categories.page";
 
+import { fetchCategories } from "./redux/reducers/categories/categories.actions";
+
 import { useDispatch, useSelector } from "react-redux";
 import { isUserAuthenticated } from "./redux/reducers/auth/auth.actions";
 
@@ -20,6 +22,8 @@ const App = (props) => {
     if (!auth.authenticated) {
       dispatch(isUserAuthenticated());
     }
+
+    dispatch(fetchCategories());
   }, []);
   return (
     <>

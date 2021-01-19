@@ -2,6 +2,8 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import { buttonVariants } from "./buttonVariants";
 
+import "./button.styles.scss";
+
 const CustomButton = (props) => {
   const {
     label,
