@@ -1,12 +1,5 @@
 .header {
   z-index: 1;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(214, 255, 253, 1) 49%,
-    rgba(205, 222, 255, 1) 100%
-  );
   width: 100%;
   height: fit-content;
   // position: absolute;
@@ -16,13 +9,7 @@
 }
 
 .tool-bar {
-  background: rgb(223, 255, 190);
-  background: linear-gradient(
-    90deg,
-    rgba(223, 255, 190, 1) 0%,
-    rgba(118, 255, 191, 1) 49%,
-    rgba(38, 255, 150, 1) 100%
-  );
+  background-color: white;
 }
 
 .nav-link {
