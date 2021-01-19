@@ -4,13 +4,16 @@
   position: relative;
   top: 0;
   left: 0;
-  width: 300px;
-  height: calc(100vh - 64px);
-  min-height: calc(100vh - 64px);
-  background-color: #e4e4e4;
+  width: 20vw;
+  height: 100vh;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(214, 255, 253, 1) 49%,
+    rgba(205, 222, 255, 1) 100%
+  );
   box-shadow: 3px 4px 11px 0px;
-  margin-right: 2rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;

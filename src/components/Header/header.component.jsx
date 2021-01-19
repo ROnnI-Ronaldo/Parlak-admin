@@ -37,7 +37,7 @@ const Header = (props) => {
   return (
     <div className="header">
       <AppBar position='static'>
-        <Toolbar>
+        <Toolbar className="tool-bar">
           <IconButton
             edge='start'
             className={classes.menuButton}

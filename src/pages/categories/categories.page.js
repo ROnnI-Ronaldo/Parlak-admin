@@ -96,7 +96,7 @@ const Categories = (props) => {
 
   return (
     <Layout sideNav>
-      <div style={{ display: "block", width: "78%" }}>
+      <div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <h1>Category List</h1>
           <CustomButton

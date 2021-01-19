@@ -6,13 +6,11 @@ import SideNav from "../../components/SideNav/SideNav.component";
 import "./layout.styles.scss";
 
 const Layout = (props) => (
-  <>
-    <Header />
-    <div className={`${props.sideNav ? "children" : ""}`}>
-      {props.sideNav ? <SideNav /> : null}
-      {props.children}
-    </div>
-  </>
+  <div className={`${!props.sideNav ? "side" : ""}  layout`}>
+    {props.sideNav ? <SideNav className='side-nav' /> : null}
+    <Header className='header' />
+    <div className='children'>{props.children}</div>
+  </div>
 );
 
 export default Layout;
