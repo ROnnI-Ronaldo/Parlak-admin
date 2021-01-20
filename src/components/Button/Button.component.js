@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import { buttonVariants } from "./buttonVariants";
+import { OutlinedButton } from "./button.styles";
 
 import "./button.styles.scss";
 
@@ -21,15 +22,21 @@ const CustomButton = (props) => {
   };
 
   return (
-    <Button
-      style={{ ...buttonStyles }}
-      variant={buttonVariants[variant] || "contained"}
-      color={color}
-      onClick={onClick}
-      {...otherProps}
-    >
-      {label}
-    </Button>
+    <>
+      {variant === "outline" ? (
+        <OutlinedButton>{label}</OutlinedButton>
+      ) : (
+        <Button
+          style={{ ...buttonStyles }}
+          variant={buttonVariants[variant] || "contained"}
+          color={color}
+          onClick={onClick}
+          {...otherProps}
+        >
+          {label}
+        </Button>
+      )}
+    </>
   );
 };
 

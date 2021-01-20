@@ -6,7 +6,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import Button from "@material-ui/core/Button";
+import Button from '../Button/Button.component'
 
 import { useSelector, useDispatch } from "react-redux";
 import { signOut } from "../../redux/reducers/auth/auth.actions";
@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Header = (props) => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
@@ -38,25 +37,12 @@ const Header = (props) => {
     <div className="header">
       <AppBar position='static'>
         <Toolbar className="tool-bar">
-          <IconButton
-            edge='start'
-            className={classes.menuButton}
-            color='inherit'
-            aria-label='menu'
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant='h6' className={classes.title}>
-            {auth.authenticated ? "Admin Dashboard" : ""}
-          </Typography>
           {auth.authenticated ? (
             <Button
-              style={{ color: "white" }}
-              className='nav-link'
-              onClick={logoutRequest}
-            >
-              SignOut
-            </Button>
+             variant= "outline" 
+             onClick={logoutRequest}
+             label="SignOut"
+            /> 
           ) : (
             <>
               <NavLink className='nav-link' to='/login'>

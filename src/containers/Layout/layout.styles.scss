@@ -23,8 +23,11 @@
   }
 }
 
+.collapse {
+  grid-template-columns: minmax(4vw, 4vw) 1fr 1fr;
+}
+
 .side {
-  display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 65px 1fr;
 
